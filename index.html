@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Материалы</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body { font-family: sans-serif; padding: 15px; }
+    .menu button {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 12px;
+      font-size: 17px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Разделы</h1>
+
+<div class="menu">
+  <button onclick="show('r1')">Раздел 1</button>
+  <button onclick="show('r2')">Раздел 2</button>
+  <button onclick="show('r3')">Раздел 3</button>
+</div>
+
+<div id="content"></div>
+
+<script>
+Telegram.WebApp.ready();
+
+function show(section) {
+  let html = "";
+
+  if (section === "r1") {
+    html = `
+      <h2>Раздел 1</h2>
+      <p>Текст раздела.</p>
+    `;
+  }
+
+  if (section === "r2") {
+    html = `
+      <h2>Раздел 2</h2>
+      <p>Другой текст.</p>
+    `;
+  }
+
+  if (section === "r3") {
+    html = `
+      <h2>Раздел 3</h2>
+      <p>Информация здесь.</p>
+    `;
+  }
+
+  document.getElementById("content").innerHTML = html;
+}
+</script>
+
+</body>
+</html>
