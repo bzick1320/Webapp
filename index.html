@@ -48,6 +48,16 @@ function show(section) {
   document.getElementById("content").innerHTML = html;
 }
 </script>
+<script>
+function searchItems() {
+    let input = document.getElementById("search").value.toLowerCase();
+    let items = document.querySelectorAll(".menu button");
 
+    items.forEach(btn => {
+        let text = btn.innerText.toLowerCase();
+        btn.style.display = text.includes(input) ? "" : "none";
+    });
+}
+</script>
 </body>
 </html>
