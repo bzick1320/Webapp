@@ -1,63 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Материалы</title>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Медицинские разделы</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<input type="text" id="search" placeholder="Поиск..." onkeyup="searchItems()">
-<h1>Разделы</h1>
+  <h1>Медицинские разделы</h1>
 
-<div class="menu">
-  <button onclick="show('r1')">Раздел 1</button>
-  <button onclick="show('r2')">Раздел 2</button>
-  <button onclick="show('r3')">Раздел 3</button>
-</div>
+  <!-- Поле поиска -->
+  <input type="text" id="search" placeholder="Поиск раздела...">
 
-<div id="content"></div>
+  <!-- Основное меню -->
+  <div class="menu" id="menu">
+    <button>Акушерство и гинекология</button>
+    <button>Анестезиология и реанимация</button>
+    <button>Инфекционные заболевания</button>
+    <button>Кардиология</button>
+    <button>Констатация</button>
+    <button>Неврология</button>
+    <button>Оториноларингология</button>
+    <button>Офтальмология</button>
+    <button>Педиатрия</button>
+    <button>Стоматология</button>
+    <button>Терапия</button>
+    <button>Токсикология</button>
+    <button>Травматология</button>
+    <button>Урология</button>
+    <button>Хирургия</button>
+    <button>Прочее</button>
+    <button>Шпаргалки</button>
+  </div>
 
-<script>
-Telegram.WebApp.ready();
+  <script>
+    // Поиск по разделам
+    const searchInput = document.getElementById('search');
+    const buttons = document.querySelectorAll('.menu button');
 
-function show(section) {
-  let html = "";
-
-  if (section === "r1") {
-    html = `
-      <h2>Раздел 1</h2>
-      <p>Текст раздела.</p>
-    `;
-  }
-
-  if (section === "r2") {
-    html = `
-      <h2>Раздел 2</h2>
-      <p>Другой текст.</p>
-    `;
-  }
-
-  if (section === "r3") {
-    html = `
-      <h2>Раздел 3</h2>
-      <p>Информация здесь.</p>
-    `;
-  }
-
-  document.getElementById("content").innerHTML = html;
-}
-</script>
-<script>
-function searchItems() {
-    let input = document.getElementById("search").value.toLowerCase();
-    let items = document.querySelectorAll(".menu button");
-
-    items.forEach(btn => {
-        let text = btn.innerText.toLowerCase();
-        btn.style.display = text.includes(input) ? "" : "none";
+    searchInput.addEventListener('input', () => {
+      const value = searchInput.value.toLowerCase();
+      buttons.forEach(btn => {
+        btn.style.display = btn.textContent.toLowerCase().includes(value)
+          ? 'block'
+          : 'none';
+      });
     });
-}
-</script>
+  </script>
 </body>
 </html>
